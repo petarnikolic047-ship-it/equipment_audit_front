@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Oswald:wght@500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --e-global-color-primary: #0f0f0f;
+  --e-global-color-secondary: #3173b3;
+  --e-global-color-text: #ffffff;
+  --e-global-color-accent: #6af8a2;
+  --e-global-color-blue-deep: #05365e;
+  --e-global-color-danger: #ef493d;
+  --e-global-color-muted: #545252;
+
+  --e-global-typography-primary-font-family: 'futura-pt-bold';
+  --e-global-typography-primary-font-size: 48px;
+  --e-global-typography-primary-font-weight: 700;
+  --e-global-typography-primary-text-transform: uppercase;
+  --e-global-typography-primary-line-height: 52px;
+  --e-global-typography-text-font-family: 't26-carbon';
+  --e-global-typography-text-font-size: 20px;
+  --e-global-typography-text-letter-spacing: 0.8px;
+
+  font-family: var(--e-global-typography-text-font-family), 'Rajdhani', 'Segoe UI', sans-serif;
+  font-size: 18px;
+  line-height: 1.35;
+  font-weight: 500;
+  color: var(--e-global-color-text);
+  background: var(--e-global-color-primary);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  color: var(--e-global-color-text);
+  background:
+    linear-gradient(rgba(15, 15, 15, 0.94), rgba(15, 15, 15, 0.98)),
+    #0f0f0f;
+}
+
+@layer components {
+  header.sticky.top-0 img[alt='Inforce Your Fiercest Ally'] {
+    display: none !important;
+  }
+
+  .brand-shell {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .brand-shell::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background-image: url('./assets/brand/camo-asset-black.png');
+    background-position: center;
+    background-size: cover;
+    opacity: 0.34;
+  }
+
+  .brand-shell::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      linear-gradient(90deg, rgba(106, 248, 162, 0.06) 0%, transparent 18%),
+      linear-gradient(180deg, rgba(49, 115, 179, 0.08) 0%, rgba(15, 15, 15, 0) 45%);
+  }
+
+  .brand-display {
+    font-family: var(--e-global-typography-primary-font-family), 'Barlow Condensed', 'Oswald', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  .brand-page-title {
+    font-family: var(--e-global-typography-primary-font-family), 'Barlow Condensed', 'Oswald', sans-serif;
+    font-size: clamp(2rem, 3.1vw, 3.35rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+
+  .brand-camo-blue {
+    background:
+      linear-gradient(110deg, rgba(15, 15, 15, 0.82), rgba(15, 15, 15, 0.88)),
+      url('./assets/brand/camo-asset-blue.png');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .brand-camo-red {
+    background:
+      linear-gradient(120deg, rgba(15, 15, 15, 0.58), rgba(15, 15, 15, 0.8)),
+      url('./assets/brand/camo-asset-red.png');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .brand-outline {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .inline-row-expander {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    will-change: max-height, opacity;
+    transition:
+      max-height 220ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 200ms ease-out;
+  }
+
+  .inline-row-expander[data-open='true'] {
+    max-height: 5000px;
+    opacity: 1;
+  }
+
+  .inline-row-expander-inner {
+    overflow: hidden;
+  }
+
+  .inline-row-expander-fade {
+    opacity: 0;
+    transform: translateY(-6px);
+    will-change: opacity, transform;
+    transition:
+      opacity 180ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .inline-row-expander[data-open='true'] .inline-row-expander-fade {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .inline-row-expander[data-open='false'] .inline-row-expander-fade {
+    pointer-events: none;
+  }
+
+  .detail-skeleton {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(15, 15, 15, 0.55);
+  }
+
+  .detail-skeleton-line {
+    height: 0.65rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .inline-row-expander,
+    .inline-row-expander-fade {
+      transition: none !important;
+      transform: none !important;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+export const ROUTE_PATHS = {
+  LOGIN: '/login',
+  DASHBOARD: '/',
+  MY_EQUIPMENT: '/my-equipment',
+  ASSETS: '/assets',
+  ASSET_DETAIL: '/assets/:assetId',
+  ASSET_DETAIL_FULL: '/assets/:assetId/full',
+  EMPLOYEES: '/employees',
+  EMPLOYEE_DETAIL: '/employees/:employeeId',
+  EMPLOYEE_DETAIL_FULL: '/employees/:employeeId/full',
+  ASSIGNMENTS: '/assignments',
+  ASSIGNMENT_DETAIL: '/assignments/:assignmentId',
+  ASSIGNMENT_DETAIL_FULL: '/assignments/:assignmentId/full',
+  STOCKTAKE: '/audits/stocktake',
+  IMPORTS: '/imports',
+  IMPORT_DETAIL: '/imports/:importJobId',
+  EXPORTS: '/exports',
+  EXPORT_DETAIL: '/exports/:exportJobId',
+  REPORTS: '/reports',
+  REFERENCE_DATA_ADMIN: '/admin/reference-data',
+  ATTRIBUTE_ADMIN: '/admin/attributes',
+  SYSTEM_LOGS: '/logs/system',
+  AUDIT_EVENTS: '/logs/audit-events',
+  ENTITY_HISTORY: '/history/entity',
+  UI_PLAYGROUND: '/ui-playground',
+} as const
+
+export type AppRoutePath = (typeof ROUTE_PATHS)[keyof typeof ROUTE_PATHS]
