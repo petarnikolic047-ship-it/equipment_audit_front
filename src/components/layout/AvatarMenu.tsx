@@ -1,9 +1,11 @@
 import { ChevronDown, LogOut } from 'lucide-react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../../features/auth/authStore'
 
 export function AvatarMenu() {
   const [open, setOpen] = useState(false)
+  const navigate = useNavigate()
   const userInfo = useAuthStore((state) => state.userInfo)
   const role = useAuthStore((state) => state.role)
   const logout = useAuthStore((state) => state.logout)
@@ -29,7 +31,8 @@ export function AvatarMenu() {
             type="button"
             onClick={() => {
               logout()
-              window.location.assign('/login')
+              setOpen(false)
+              navigate('/', { replace: true })
             }}
             className="flex w-full items-center gap-2 rounded-sm px-2 py-2 text-sm text-slate-100 hover:bg-white/10"
           >

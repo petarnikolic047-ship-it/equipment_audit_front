@@ -25,7 +25,7 @@ apiClient.interceptors.response.use(
     if (normalized.status === 401) {
       useAuthStore.getState().logout()
       if (!window.location.pathname.startsWith('/login')) {
-        window.location.assign('/login')
+        window.location.replace('/')
       }
     }
     return Promise.reject(normalized)
